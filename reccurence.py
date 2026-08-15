@@ -64,3 +64,28 @@ def generate_occurrences(transaction, forecast_start, forecast_end):
 
             year += 1
     return occurrences
+
+
+def generate_forecast(transactions, forecast_start, forecast_end):
+    forecast = []
+
+    for transaction in transactions:
+        occurrences = generate_occurrences(
+            transaction,
+            forecast_start,
+            forecast_end
+        )
+
+        for occurrence in occurrences:
+            amount = transaction.amount
+
+            if transaction.transaction_type == "expense":
+                amount = -amount
+
+            forecast.append({
+                "date": occurrence,
+                "name": transaction.name,
+                "amount": amount
+            })
+
+    return forecast
