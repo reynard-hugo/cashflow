@@ -67,6 +67,13 @@ def generate_occurrences(transaction, forecast_start, forecast_end):
 
 
 def generate_forecast(transactions, forecast_start, forecast_end):
+    """
+    Generate forecast entries for all transactions within the forecast period.
+
+    Each transaction is expanded into its occurrences based on its frequency.
+    Income amounts are stored as positive values, while expense amounts are
+    converted to negative values.
+    """
     forecast = []
 
     for transaction in transactions:
