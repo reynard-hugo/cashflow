@@ -41,3 +41,23 @@ def generate_forecast(transactions, forecast_start, forecast_end):
     forecast.sort(key=get_date)
 
     return forecast
+
+def calculate_balances(forecast, starting_balance):
+    """
+    Calculate the running balance for each forecast entry.
+    """
+
+    balance = starting_balance
+    result = []
+
+    for entry in forecast:
+        balance += entry["amount"]
+
+        result.append({
+            "date": entry["date"],
+            "name": entry["name"],
+            "amount": entry["amount"],
+            "balance": balance
+        })
+
+    return result
