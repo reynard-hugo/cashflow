@@ -1,3 +1,10 @@
+"""
+This file is used to provide the Streamlit user interface for the
+Cash-Flow Forecaster.
+
+It allows users to add income and expense transactions, select a forecast
+period, and view their projected balance and lowest balance.
+"""
 import streamlit as st
 import pandas as pd
 from datetime import date

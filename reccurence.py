@@ -1,7 +1,19 @@
+"""
+This file is used to generate recurring transaction dates for the
+Cash-Flow Forecaster.
+
+It handles one-time, weekly, monthly, and yearly transaction frequencies
+within a specified forecast period.
+"""
 from datetime import date, timedelta
 import calendar
+from models import Transaction
 
-def generate_occurrences(transaction, forecast_start, forecast_end):
+def generate_occurrences(
+    transaction: Transaction,
+    forecast_start: date,
+    forecast_end: date
+    ) -> list[date]:
     """Generate transaction occurrences within the forecast period."""
     occurrences = []
 
@@ -66,7 +78,11 @@ def generate_occurrences(transaction, forecast_start, forecast_end):
     return occurrences
 
 
-def generate_forecast(transactions, forecast_start, forecast_end):
+def generate_forecast(
+    transactions: list[Transaction],
+    forecast_start: date,
+    forecast_end: date
+    ) -> list[dict]:    
     """
     Generate forecast entries for all transactions within the forecast period.
 
