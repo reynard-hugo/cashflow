@@ -61,3 +61,17 @@ def calculate_balances(forecast, starting_balance):
         })
 
     return result
+
+def find_lowest_balance(forecast):
+    """Find the lowest projected balance and its date."""
+
+    if not forecast:
+        return None
+
+    lowest = forecast[0]
+
+    for entry in forecast:
+        if entry["balance"] < lowest["balance"]:
+            lowest = entry
+
+    return lowest
